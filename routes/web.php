@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+// for database
+use Illuminate\Support\Facades\DB;
+// for date and time
+use Carbon\Carbon;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,17 +21,49 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 // http://blog.test/ 
 
-Route::get('new', function () {
-    return view("hello");
-});
-// http://blog.test/hello
+Route::view('posts/create', 'posts.create');
 
-Route::get('/hello2/{name}', function ($name) {
-    return view("hello2", compact('name'));
-});
-// http://blog.test/hello2/ammar
+Route::post('/posts/store', function () {
+    DB::table('posts')->insert([
+        'title' => request('title'),
+        'body' => request('body'),
+        'author' => request('author'),
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now(),
+    ]);
 
-Route::view('/hello', 'hello');
-// http://blog.test/hello
+    return back();
+});
+
+// Route::get('/posts', function () {
+//     $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
+//     return view('posts.index', compact('posts'));
+// });
+
+Route::get('/posts', function () {
+    $posts = DB::table('posts')->latest()->get();
+    return view('posts.index', compact('posts'));
+});
+
+Route::get('/posts/{id}', function($id) {
+    $post = DB::table('posts')->find($id);
+    return view('posts.show', compact('post'));
+});
+
+//     $postUp = DB::table('posts')->where('id', '=', 3)->update(['title' => 'المقالة 3']);
+//     $postUp = DB::table('posts')->where('id', '=', 3)->delete());
+
+
+// these is wrong
+// Route::view ('posts/edit', 'posts.edit');
+
+// Route::post('/posts/update', function(){
+//     $postUp = DB::table('posts')->where('id', '=', 3)->update(['title' => 'المقالة 3']);
+// });
+
+// Route::post('/posts/delete', function(){
+//     $postUp = DB::table('posts')->where('id', '=', 3)->delete());
+// });
