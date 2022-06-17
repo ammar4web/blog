@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 // for database
@@ -27,6 +28,14 @@ Route::get('/', function () {
 Route::view('posts/create', 'posts.create');
 
 Route::post('/posts/store', function () {
+    // Post::created([
+    //     'title' => request('title'),
+    //     'body' => request('body'),
+    //     'author' => request('author'),
+    //     'created_at' => Carbon::now(),
+    //     'updated_at' => Carbon::now(),
+    //     'id' => 3,
+    // ]);
     DB::table('posts')->insert([
         'title' => request('title'),
         'body' => request('body'),
@@ -44,12 +53,16 @@ Route::post('/posts/store', function () {
 // });
 
 Route::get('/posts', function () {
-    $posts = DB::table('posts')->latest()->get();
+    // $posts = DB::table('posts')->latest()->get();
+    $posts = Post::all();
     return view('posts.index', compact('posts'));
 });
 
+
 Route::get('/posts/{id}', function($id) {
     $post = DB::table('posts')->find($id);
+    // $post = Post::find($id);
+    $post = Post::findOrFail($id);
     return view('posts.show', compact('post'));
 });
 
