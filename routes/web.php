@@ -63,7 +63,10 @@ Route::get('/posts/{id}', function($id) {
     $post = DB::table('posts')->find($id);
     // $post = Post::find($id);
     $post = Post::findOrFail($id);
-    return view('posts.show', compact('post'));
+    // return view('posts.show', compact('post'));
+
+    $comments = $post->comments()->where('approved', 1)->get();
+    return view('posts.show', compact('post', 'comments'));
 });
 
 //     $postUp = DB::table('posts')->where('id', '=', 3)->update(['title' => 'المقالة 3']);

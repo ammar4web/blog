@@ -224,15 +224,27 @@
                     <h2 class="blog-post-title">
                         {{ $post->title }}
                     </h2>
-                    <p class="blog-post-meta">بقلم 
+                    <p class="blog-post-meta">بقلم
                         <a href="#">{{ $post->author }}</a>
-                        {{Carbon\Carbon::parse($post->created_at)->diffForHumans()}}
+                        {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
                         {{-- {{ $post->created_at }} --}}
                     </p>
 
                     <p>
-                        {{ $post->body}}
+                        {{ $post->body }}
                     </p>
+
+                    <h2>التعليقات: </h2>
+                    {{-- @foreach ($post->comments()->get as $comment) --}} {{-- in web.php (route or in PostController I rewrite this line) --}}
+                    {{-- @foreach ($post->comments as $comment) --}} {{-- because the bast line we make this line in comment but it works if you try it --}}
+                    @foreach ($comments as $comment)
+                        <h4>
+                            {{ $comment->name }}
+                        </h4>
+                        <p>
+                            {{ $comment->body }}
+                        </p>
+                    @endforeach
                 </div>
 
                 <nav class="blog-pagination" aria-label="Pagination">
