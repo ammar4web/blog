@@ -12,7 +12,8 @@
 
 <body>
     <div class="container">
-        <form action="/posts/store" method="POST">
+        {{-- <form action="/posts/store" method="POST"> --}} {{-- this was wrong (/store)--}}
+        <form action="/posts" method="POST">
             @csrf
             <div class="form-group">
                 <label for="title">عنوان المقالة</label>
