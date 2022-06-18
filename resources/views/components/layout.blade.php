@@ -215,8 +215,9 @@
         </div>
     </div>
 
-    @yield('content')
+    {{-- @yield('content') --}}
 
+    {{ $slot }}
     <footer class="blog-footer">
         <p>تم تصميم نموذج المدونة لـ <a href="https://getbootstrap.com/">Bootstrap</a> بواسطة <a
                 href="https://twitter.com/mdo"><bdi lang="en" dir="ltr">@mdo</bdi></a>.</p>

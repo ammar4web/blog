@@ -1,11 +1,12 @@
 {{-- this line is importent to work HTML tage --}}
 {{-- {!! '<script> alert("hi") </script>' !!} --}}
 
-@extends('posts.layout')
+{{-- @extends('posts.layout') --}}
 {{-- @section('title', $post->title) --}}
 
 
-@section('content')
+{{-- @section('content') --}}
+<x-layout>
     <main class="container">
 
         <div class="row">
@@ -71,4 +72,5 @@
             </div>
         </div>
     </main>
-@endsection
+</x-layout>
+{{-- @endsection --}}

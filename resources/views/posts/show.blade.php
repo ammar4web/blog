@@ -1,8 +1,9 @@
-@extends('posts.layout')
+{{-- @extends('posts.layout')
 
 @section('title', $post->title)
 
-@section('content')
+@section('content') --}}
+<x-layout>
     <main class="container">
         <div class="row">
             <div class="col-md-8">
@@ -87,4 +88,6 @@
         </div>
 
     </main>
-@endsection
+</x-layout>
+
+{{-- @endsection --}}
