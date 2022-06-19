@@ -4,7 +4,7 @@
 
 @section('content') --}}
 <x-layout>
-    <x-post :post="$post" :comments="$comments" />
+    <x-post :post="$post" :comments="$comments" class="font-weight-bold"/>
 </x-layout>
 
 {{-- @endsection --}}
