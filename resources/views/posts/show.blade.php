@@ -6,6 +6,8 @@
 <x-layout>
     {{-- <x-post :post="$post" :comments="$comments" class="font-weight-bold"/> --}}
     <x-test :post="$post" :comments="$comments" class="font-weight-bold"/>
+    <h3>أضف تعليقا</h3>
+    <x-createComment :post="$post" />
     <nav class="blog-pagination" aria-label="Pagination">
         <a class="btn btn-outline-primary" href="#">تدوينات أقدم</a>
         <a class="btn btn-outline-secondary disabled">تدوينات أحدث</a>

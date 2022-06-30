@@ -42,6 +42,7 @@ Route::get('/', function () {
 
 // 
 Route::resource('posts', PostsController::class);
+Route::post('/posts/{post}/comments', [CommentesController::class, 'store']);
 // 
 
 //     $postUp = DB::table('posts')->where('id', '=', 3)->update(['title' => 'المقالة 3']);
