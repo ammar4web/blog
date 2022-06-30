@@ -84,7 +84,7 @@ class PostsController extends Controller
         // $post = Post::findOrFail($post);
 
         $comments = $post->comments()->where('approved', 1)->get();
-        
+
         // 
 
         // return view('posts.show', compact('post'));
@@ -97,9 +97,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    // public function edit($id)
+    public function edit(POST $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -109,9 +110,14 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $post->update([
+            'title' => request('title'),
+            'body' => request('body'),
+            'author' => request('author'),
+        ]);
+        return redirect('/posts');
     }
 
     /**

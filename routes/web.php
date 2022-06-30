@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentesController;
 use App\Http\Controllers\PostsController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;

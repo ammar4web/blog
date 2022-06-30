@@ -63,6 +63,7 @@ class Test extends Component
                         @endforeach
                     @endif
                 </div>
+                <a class="btn btn-primary" href="/posts/{{$post->id}}/edit">تعديل المقالة</a>
 
                 
 blade;

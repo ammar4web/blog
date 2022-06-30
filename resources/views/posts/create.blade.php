@@ -12,21 +12,10 @@
 
 <body>
     <div class="container">
-        {{-- <form action="/posts/store" method="POST"> --}} {{-- this was wrong (/store)--}}
+        {{-- <form action="/posts/store" method="POST"> --}} {{-- this was wrong (/store) --}}
+        {{-- @include('posts.form') --}}
         <form action="/posts" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="title">عنوان المقالة</label>
-                <input type="text" name="title" id="title" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="body">نص المقالة</label>
-                <textarea name="body" id="body" cols="30" rows="10" class="form-control"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="author">كاتب المقالة</label>
-                <input type="text" name="author" id="author" class="form-control">
-            </div>
+            <x-form />
             <button type="submit" class="btn btn-primary">حفظ</button>
         </form>
     </div>
