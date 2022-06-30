@@ -57,7 +57,7 @@ class PostsController extends Controller
         //     'created_at' => Carbon::now(),
         //     'updated_at' => Carbon::now(),
         // ]);
-
+        $this->validatePost();
         Post::create([
             'title' => request('title'),
             'body' => request('body'),
@@ -112,6 +112,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $this->validatePost();
         $post->update([
             'title' => request('title'),
             'body' => request('body'),
@@ -129,5 +130,14 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function validatePost()
+    {
+        request()->validate([
+            'title' => 'required|unique:posts|max:5',
+            'body' => ['required', 'unique:posts', 'max:10'],
+            'author' => 'required'
+        ]);
     }
 }

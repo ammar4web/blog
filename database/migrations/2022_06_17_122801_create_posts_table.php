@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 25);
             $table->string('author', 40);
+            // $table->text('body')->nullable();
             $table->text('body');
             $table->timestamps();
         });
