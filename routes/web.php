@@ -4,7 +4,7 @@ use App\Http\Controllers\CommentesController;
 use App\Http\Controllers\PostsController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Mail;
 // for database
 use Illuminate\Support\Facades\DB;
 // for date and time
@@ -60,3 +60,10 @@ Route::post('/posts/{post}/comments', [CommentesController::class, 'store']);
 // Route::post('/posts/delete', function(){
 //     $postUp = DB::table('posts')->where('id', '=', 3)->delete());
 // });
+
+// and there are a few code in .enf file
+Route::get('mail/', function() {
+    Mail::raw('شكرا لك', function($message) {
+        $message->to("m.ammar4web@gmail.com")->subject('تواصل معي');
+    });
+});
