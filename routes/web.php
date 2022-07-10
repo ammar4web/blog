@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentesController;
 use App\Http\Controllers\PostsController;
+use App\Mail\DiscountOffer;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
@@ -62,8 +63,15 @@ Route::post('/posts/{post}/comments', [CommentesController::class, 'store']);
 // });
 
 // and there are a few code in .enf file
-Route::get('mail/', function() {
-    Mail::raw('شكرا لك', function($message) {
-        $message->to("m.ammar4web@gmail.com")->subject('تواصل معي');
-    });
+// Route::get('mail/', function() {
+//     Mail::raw('شكرا لك', function($message) {
+//         $message->to("m.ammar4web@gmail.com")->subject('تواصل معي');
+//     });
+// });
+Route::post('mail/', function () {
+    $email = request()->validate([
+        'email' => 'required|email'
+    ]);
+    Mail::to($email)->send(new DiscountOffer());
+    return back();
 });

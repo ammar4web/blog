@@ -35,11 +35,26 @@
             <div class="col-md-4">
                 <div class="position-sticky" style="top: 2rem;">
                     <div class="p-4 mb-3 bg-light rounded">
-                        <h4 class="fst-italic">حول</h4>
-                        <p class="mb-0">أقبلت، فأقبلت معك الحياة بجميع صنوفها وألوانها: فالنبات ينبت، والأشجار تورق
-                            وتزهر، والهرة تموء، والقمري يسجع، والغنم يثغو، والبقر يخور، وكل أليف يدعو أليفه. كل شيء يشعر
-                            بالحياة وينسي هموم الحياة، ولا يذكر إلا سعادة الحياة، فإن كان الزمان جسدا فأنت روحه، وإن كان
-                            عمرا فأنت شبابه.</p>
+                        <h4>مبادئ التسويق الإلكتروني</h4>
+                        <p>يمكنك الآن شراء نسختك من كتاب مبادئ التسويق بتخفيض قدره 30%. أدخل عنوان بريدك الكتروني لتصلك
+                            رسالة بالتفاصيل</p>
+                        <form action="/mail" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" name="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group mt-1">
+                                <button type="submit" class="btn btn-primary">إرسال</button>
+                            </div>
+                        </form>
+                        @error('email')
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ $message }}<button type="button" class="close" data-dismiss="alert"
+                                    aria-label="Colse">
+                                    <span aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="p-4">
