@@ -28,6 +28,7 @@ class DiscountOffer extends Mailable
      */
     public function build()
     {
-        return $this->view('posts.discountOffer');
+        // return $this->view('posts.discountOffer');
+        return $this->markdown('posts.discountOffer2');
     }
 }
